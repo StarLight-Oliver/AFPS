@@ -1,0 +1,9 @@
+"Sprite" {
+	"$basetexture" "ogc/lightsaber/blade_glow"
+
+	"$spriteorientation" "vp_parallel"
+	"$spriteorigin" "[ 0.5 0.5 ]"
+
+	"$vertexcolor" "1"
+	"$spriterendermode" "5"
+}

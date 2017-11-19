@@ -1,0 +1,7 @@
+"UnlitGeneric"
+{
+	"$basetexture" "ogc/lightsaber/blade_inner"
+	"$vertexcolor" "1"
+	"$alphatest" "1"
+	"$nocull" "1"
+}
