@@ -22,7 +22,6 @@ function EFFECT:Init( data )
 		particle:SetEndAlpha( 0 )
 
 		particle:SetColor( color[1], color[2], color[3])
-		--particle:SetAngleVelocity( Angle( math.Rand( -180, 180 ), math.Rand( -180, 180 ), math.Rand( -180, 180 ) ) )
 	end
 
 	emitter:Finish()

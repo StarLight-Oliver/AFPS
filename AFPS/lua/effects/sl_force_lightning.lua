@@ -3,35 +3,6 @@ local function GetRandomPositionInBox( mins, maxs, ang )
 	return ang:Up() * math.random( mins.z, maxs.z ) + ang:Right() * math.random( mins.y, maxs.y ) + ang:Forward() * math.random( mins.x, maxs.x )
 end
 
-local function GenerateLighting( from, to, deviations, power )
-	local start = from
-	if ( isentity( start ) ) then start = from:GetPos() end
-	local endpos = to:GetPos()
-
-	--render.DrawWireframeBox( start, Angle(0, 0, 0),from:OBBMins(), from:OBBMaxs(), Color(255, 0, 0), true )
-	--render.DrawWireframeBox( start, to:GetAngles(),from:OBBMins(), from:OBBMaxs(), Color(0, 255, 0), true )
-
-	--start = start + GetRandomPositionInBox( from:OBBMins(), from:OBBMaxs(), from:GetAngles() )
-	endpos = endpos + GetRandomPositionInBox( to:OBBMins(), to:OBBMaxs(), to:GetAngles() )
-
-	local right = (start - endpos):Angle():Right()
-	local up = (start - endpos):Angle():Up()
-	local segments = {
-		{ start, endpos }
-	}
-	for i = 0, power do
-		local newsegs = {}
-		for id, seg in pairs( segments ) do
-			local mid = Vector( (seg[1].x + seg[2].x) / 2, (seg[1].y + seg[2].y) / 2, (seg[1].z + seg[2].z) / 2 )
-			local offsetpos = mid + right * math.random( -deviations, deviations ) + up * math.random( -deviations, deviations )
-			table.insert( newsegs, {seg[1], offsetpos} )
-			table.insert( newsegs, {offsetpos, seg[2]} )
-		end
-		segments = newsegs
-	end
-	return segments
-end
-
 local function GenerateLightingSegs( from, to, deviations, segs )
 	local start = from
 	if ( isentity( start ) ) then start = from:GetPos() end

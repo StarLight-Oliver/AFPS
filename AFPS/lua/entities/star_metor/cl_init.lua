@@ -12,10 +12,10 @@ function ENT:Initialize()
 end
 
 function ENT:Think()
+    if not self.emitter then return end
     local vOffset = self:LocalToWorld(Vector(math.Rand(-3, 3), math.Rand(-3, 3), math.Rand(-3, 3))) + Vector(math.Rand(-3, 3), math.Rand(-3, 3), math.Rand(-3, 3))
     local vNormal = (vOffset - self:GetPos()):GetNormalized()
 
-    if not self.emitter then return end
 
     local particle = self.emitter:Add(Model("particles/smokey"), vOffset)
     particle:SetVelocity(vNormal * math.Rand(10, 30))
